@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import uy.interfase.client.TspDemoIdasClient;
 import uy.interfase.dto.TokenDto;
 
-
+/**
+ * @author Milver Flores Acevedo
+ * @since 1.0
+ */
 @RestController
 @RequestMapping("/api/v1/authentication/token")
 public class AuthenticationResource {

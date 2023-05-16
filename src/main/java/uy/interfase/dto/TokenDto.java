@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * @author Milver Flores Acevedo
+ * @since 1.0
+ */
 @Getter
 @Setter
 public class TokenDto {
