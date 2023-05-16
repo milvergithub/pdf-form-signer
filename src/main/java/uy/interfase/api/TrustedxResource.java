@@ -21,7 +21,7 @@ import uy.interfase.dto.TokenDto;
  */
 @RestController
 @RequestMapping("/api/v1/trustedx-resources/esignsp")
-public class TrustedxResources {
+public class TrustedxResource {
 
     @Value("${client.id}")
     private String clientId;
@@ -51,6 +51,15 @@ public class TrustedxResources {
         TokenDto responseDto = response.getBody();
         String token = String.format("%s %s", responseDto.getTokenType(), responseDto.getAccessToken());
         ResponseEntity<Object> responseCreateProcess = demoIdasClient.getSignerProcess(token, processId);
+        return new ResponseEntity<>(responseCreateProcess.getBody(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getdocument/{documentId}")
+    public ResponseEntity<Object> getDocument(@PathVariable("documentId") String documentId) {
+        ResponseEntity<TokenDto> response = demoIdasClient.getToken("client_credentials", scope, clientId, clientSecret);
+        TokenDto responseDto = response.getBody();
+        String token = String.format("%s %s", responseDto.getTokenType(), responseDto.getAccessToken());
+        ResponseEntity<Object> responseCreateProcess = demoIdasClient.getDocument(token, documentId);
         return new ResponseEntity<>(responseCreateProcess.getBody(), HttpStatus.OK);
     }
 }

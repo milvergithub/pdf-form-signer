@@ -33,4 +33,8 @@ public interface TspDemoIdasClient {
     @GetMapping(value = "trustedx-resources/esignsp/v2/signer_processes/{process_id}")
     ResponseEntity<Object> getSignerProcess(@RequestHeader("Authorization") String token,
                                             @PathVariable("process_id") String processId);
+
+    @GetMapping(value = "trustedx-resources/esignsp/v2/documents/{document_id}/content")
+    ResponseEntity<Object> getDocument(@RequestHeader("Authorization") String token,
+                                       @PathVariable("document_id") String documentId);
 }
