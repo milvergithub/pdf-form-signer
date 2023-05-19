@@ -20,7 +20,7 @@ public class DocumentViewerResource {
             @PathVariable("fileName") String fileName,
             @RequestParam(value = "signer_process_id", required = false) String processId,
             @RequestParam(value = "status", required = false) String status) {
-        String url2 = baseUrl+"#/documentviewer/"+fileName+"?processId="+processId+"&status="+status;
+        String url2 = baseUrl+"#/documentviewer/"+fileName+"?signer_process_id="+processId+"&status="+status;
         return new RedirectView(url2);
     }
 }
