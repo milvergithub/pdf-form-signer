@@ -63,8 +63,10 @@ public class TrustedxResource {
         String token = String.format("%s %s", responseDto.getTokenType(), responseDto.getAccessToken());
 
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=document.pdf");
+        responseHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "inline;filename=document.pdf");
         responseHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE);
+        responseHeaders.setContentDispositionFormData("document.pdf", "document.pdf");
+        responseHeaders.setCacheControl("must-revalidate, post-check=0, pre-check=0");
         ResponseEntity<byte[]> responseCreateProcess = demoIdasClient.getDocument(token, documentId);
         return new ResponseEntity<>(responseCreateProcess.getBody(), responseHeaders, HttpStatus.OK);
     }
