@@ -3,6 +3,7 @@ package uy.interfase.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,10 @@ public interface TspDemoIdasClient {
 
     @GetMapping(value = "trustedx-resources/esignsp/v2/signer_processes/{process_id}")
     ResponseEntity<Object> getSignerProcess(@RequestHeader("Authorization") String token,
+                                            @PathVariable("process_id") String processId);
+
+    @DeleteMapping(value = "trustedx-resources/esignsp/v2/signer_processes/{process_id}")
+    ResponseEntity<Object> deleteSignerProcess(@RequestHeader("Authorization") String token,
                                             @PathVariable("process_id") String processId);
 
     @GetMapping(value = "trustedx-resources/esignsp/v2/documents/{document_id}/content")

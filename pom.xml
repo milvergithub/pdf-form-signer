@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>uy.interfase</groupId>
-    <artifactId>pdf-form-signer</artifactId>
+    <artifactId>pdf-form-signer-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pdf-form-signer</name>
     <description>pdf-form-signer</description>
