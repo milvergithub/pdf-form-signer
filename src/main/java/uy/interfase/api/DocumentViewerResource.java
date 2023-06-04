@@ -1,8 +1,11 @@
 package uy.interfase.api;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,5 +25,10 @@ public class DocumentViewerResource {
             @RequestParam(value = "status", required = false) String status) {
         String url2 = baseUrl+"#/documentviewer/"+fileName+"?signer_process_id="+processId+"&status="+status;
         return new RedirectView(url2);
+    }
+
+    @PostMapping("save")
+    public ResponseEntity<Void> savePdfFile() {
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
